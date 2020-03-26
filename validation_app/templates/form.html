@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>The Grand Form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{message}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+        </div>
+        <div class="row">
+            <form action="/process" method="POST">
+            {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" name="username" class="form-control">
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" class="form-control">
+
+                <label for="birthday">Birthdate:</label>
+                <input type="date" name="birthday" class="form-control">
+
+                <label for="favorite_num">Enter your favorite number between 1 and 100:</label>
+                <input type="number" name="favorite_num" class="form-control">
+
+                <input type="submit" value="Submit" class="form-control">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
